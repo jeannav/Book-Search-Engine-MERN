@@ -64,7 +64,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 [GitHub repo](https://github.com/jeannav/Book-Search-Engine-MERN)
 
-[Heroku App]()
+[Heroku App](https://mern-google-book-search-engine.herokuapp.com/)
 
 ### Author
 
