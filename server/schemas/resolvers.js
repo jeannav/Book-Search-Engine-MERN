@@ -38,10 +38,42 @@ const resolvers = {
             return { token, user }
         },
         saveBook: async (parent, { bookData }, context) => {
-
+            // make sure that context.user extists
+            if (context.user) {
+                // find User to update savedBook arrary in
+                const user = await User.findByIdAndUpdate(
+                    {
+                        _id: context.user._id
+                    },
+                    {
+                        $push: { savedBooks: bookData }
+                    },
+                    {
+                        new: true
+                    });
+                return user
+            }
+            // regardles throw error, unless they ARE logged in
+            throw new AuthenticationError("User Not Logged In!")
         },
         deleteBook: async (parent, { bookId }, context) => {
-
+            // make sure that context.user extists
+            if (context.user) {
+                // find User to update savedBook arrary in
+                const user = await User.findByIdAndUpdate(
+                    {
+                        _id: context.user._id
+                    },
+                    {
+                        $pull: { savedBooks: { bookId } }
+                    },
+                    {
+                        new: true
+                    });
+                return user
+            }
+            // regardles throw error, unless they ARE logged in
+            throw new AuthenticationError("User Not Logged In!")
         }
     },
 };
