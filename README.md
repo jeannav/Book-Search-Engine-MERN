@@ -57,7 +57,8 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 ## Assets
 
 <!-- change the link to the screenshot once activity is finished -->
-![Screenshot](./assets/images/Screenshot%202023-01-09%20at%205.05.57%20PM.png)
+![Screenshot](./assets/images/Starter%20Page.png)
+![Screenshot](./assets/images/searched%20books.png)
 
 
 ## Deployed Links
