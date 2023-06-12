@@ -1,4 +1,4 @@
-const { User, Book } = require('../models');
+const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.findOne({ _id: context.user._id })
+                const user = await User.findOne({ _id: context.user._id }).select('-__v -password');
 
                 return user
             }
@@ -56,7 +56,7 @@ const resolvers = {
             // regardles throw error, unless they ARE logged in
             throw new AuthenticationError("User Not Logged In!")
         },
-        deleteBook: async (parent, { bookId }, context) => {
+        removeBook: async (parent, { bookId }, context) => {
             // make sure that context.user extists
             if (context.user) {
                 // find User to update savedBook arrary in
